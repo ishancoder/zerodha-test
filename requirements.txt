@@ -1,0 +1,8 @@
+beautifulsoup4==4.6.0
+CherryPy==15.0.0
+html5lib==1.0.1
+Jinja2==2.10
+numpy==1.14.3
+pandas==0.23.0
+redis==2.10.6
+requests==2.18.4
