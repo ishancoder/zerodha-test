@@ -38,8 +38,7 @@ def download():
 
     # calculate the expiration of data
     current_date_time = datetime.now()
-    expiration_date_time = current_date_time + timedelta(days=1, hours=-current_date_time.hour, minutes=-current_date_time.minute, seconds=-current_date_time.second)
-    expiration_seconds = expiration_date_time.total_seconds()
+    expiration = timedelta(days=1, hours=-current_date_time.hour, minutes=-current_date_time.minute, seconds=-current_date_time.second)
 
     # push the results in redis
     for x in df.values[::-1]:
@@ -49,12 +48,12 @@ def download():
         r.lpush('HIGH', x[3])
         r.lpush('LOW', x[4])
         r.lpush('CLOSE', x[5])
-    r.expire('NAME', expiration_seconds)
-    r.expire('CODE', expiration_seconds)
-    r.expire('OPEN', expiration_seconds)
-    r.expire('CLOSE', expiration_seconds)
-    r.expire('HIGH', expiration_seconds)
-    r.expire('LOW', expiration_seconds)
+    r.expire('NAME', expiration)
+    r.expire('CODE', expiration)
+    r.expire('OPEN', expiration)
+    r.expire('CLOSE', expiration)
+    r.expire('HIGH', expiration)
+    r.expire('LOW', expiration)
 
     # delete the zip and csv file
     os.remove(f_name)
