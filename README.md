@@ -16,7 +16,7 @@ This repository contains the application code written for Zerodha interview proc
   - Or don't schedule the ```downloader.py``` and instead make ```app.py``` decide when to download the latest bhavcopy.
   - ### How to decide when to download the latest bhavcopy ?
     - Well we know that the bhavcopy will be published at every next day.
-    - So we can use that knowledge and set and expiration timer for our redis data on the next day.
+    - So we can use that knowledge and set an expiration timer for our redis data on the next day.
     - The ```app.py``` checks if the data that we have expired or not. If the data is expired we use the ```downloader.py```'s ```download``` function to download the latest bhavcopy and render the result.
     
 ## Okay Okay let's talk about how to run it. Well it's simple.
